@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="#" />
+        <link rel="stylesheet" href="./src/css/style.css" />
+        <script defer type="module" src="./src/index.js"></script>
+        <title>Rest Tester</title>
+    </head>
+    <body class="bg-slate-50 text-slate-700">
+        <main
+            class="flex px-0 md:px-1 max-h-[99.7vh] max-w-[1100px] mx-auto overflow-hidden"
+        >
+            <!-- ? History -->
+            <div
+                class="flex-1 border-slate-400 border bottom-b-0 border-x-[1px] md:max-w-[250px] lg:max-w-[300px] hidden md:block"
+            >
+                <div class="header py-[16.5px] px-2">
+                    <h1
+                        class="text-center font-semibold tracking-wider text-xl"
+                    >
+                        REST Tester
+                    </h1>
+                </div>
+                <div class="h-[1px] px-1 w-full bg-slate-400"></div>
+
+                <div id="endpoints" class="my-1 flex flex-col">
+                    <div class="flex items-center pb-1 justify-between pr-2">
+                        <div class="">
+                            <h3 class="font-semibold px-2">Resents</h3>
+                        </div>
+                        <div
+                            class="transition leading-4 rounded-full hover:outline outline-slate-400 outline-[1px]"
+                        >
+                            <button
+                                class="leading-4 h-6 w-6 rounded-full inline-flex flex-col justify-center items-center"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    preserveAspectRatio="xMidYMid meet"
+                                    focusable="false"
+                                    style="pointer-events: none; display: block"
+                                    class="style-scope yt-icon w-4 h-4"
+                                >
+                                    <g class="style-scope yt-icon">
+                                        <path
+                                            d="M12,16.5c0.83,0,1.5,0.67,1.5,1.5s-0.67,1.5-1.5,1.5s-1.5-0.67-1.5-1.5S11.17,16.5,12,16.5z M10.5,12 c0,0.83,0.67,1.5,1.5,1.5s1.5-0.67,1.5-1.5s-0.67-1.5-1.5-1.5S10.5,11.17,10.5,12z M10.5,6c0,0.83,0.67,1.5,1.5,1.5 s1.5-0.67,1.5-1.5S12.83,4.5,12,4.5S10.5,5.17,10.5,6z"
+                                            class="style-scope yt-icon"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="__history flex-1 basis-[85vh] relative">
+                        <div
+                            data-content
+                            class="flex flex-col transition overflow-hidden overflow-y-auto max-h-[78vh] h-full"
+                        ></div>
+                        <div class="absolute bottom-1 left-0 w-full">
+                            <p class="text-center text-xs">
+                                deletes the first entry after limit reached
+                            </p>
+                            <div class="text-center text-sm">
+                                <b>MAX 10 Endpoints</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ? MAIN API APP -->
+            <div
+                class="flex-1 block h-[100vh] overflow-hidden relative border-slate-400 md:border border-l-[1px] bottom-b-0"
+            >
+                <!-- ? FORM -->
+                <form
+                    data-api
+                    class="__api md:px-2 py-2 w-full flex justify-center"
+                >
+                    <div
+                        data-request-form
+                        class="header w-full max-w-[700px] flex items-center p-2 gap-2 bg-slate-500 text-slate-200 leading-none rounded-t-[1rem]"
+                    >
+                        <div class="_methods">
+                            <select
+                                class="bg-slate-500 cursor-pointer"
+                                name="METHOD"
+                                id="method"
+                            >
+                                <option value="GET">GET</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DEL">DEL</option>
+                                <option value="POST">POST</option>
+                            </select>
+                        </div>
+                        <div class="flex-1 _url">
+                            <input
+                                name="URL"
+                                id="url"
+                                type="url"
+                                autocomplete="on"
+                                class="w-[100%] py-1 px-2 outline-[1px] text-slate-800 outline outline-slate-500 border-0 focus:bottom-0 focus:outline-[3px] transition-[outline]"
+                                placeholder="https://example.com"
+                                aria-label="url bar"
+                            />
+                        </div>
+                        <div class="_submit">
+                            <button
+                                class="font-bold tracking-wide font-lg transition hover:text-blue-400"
+                                role="button"
+                                type="submit"
+                            >
+                                SEND
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- ? TABS -->
+                <div class="h-[1px] w-full bg-slate-400"></div>
+                <div class="flex justify-center w-full">
+                    <div
+                        class="__header_tabs px-1 max-w-[700px] flex w-full justify-start gap-4 items-center"
+                    >
+                        <div data-tab="description" class="flex items-center">
+                            <button class="py-1 px-3 h-full hover:bg-slate-200">
+                                Description
+                            </button>
+                        </div>
+                        <div data-tab="headers" class="py-1 flex items-center">
+                            <button class="py-1 px-3 h-full hover:bg-slate-200">
+                                Headers
+                            </button>
+                        </div>
+                        <div data-tab="query" class="flex py-1 items-center">
+                            <button class="py-1 px-3 h-full hover:bg-slate-200">
+                                Query
+                            </button>
+                        </div>
+                        <div data-tab="body" class="flex py-1 items-center">
+                            <button class="py-1 px-3 h-full hover:bg-slate-200">
+                                Body
+                            </button>
+                        </div>
+                        <div class="py-1 flex items-center">
+                            <select
+                                id="more"
+                                class="py-1 px-3 h-full bg-transparent text-inherit cursor-pointer hover:bg-slate-200"
+                            >
+                                <option value="More">More</option>
+                                <option value="More">Options</option>
+                                <!-- <option value="More">
+                                    Automatically Send Cookies
+                                </option>
+                                <option value="More">
+                                    Store Received Cookies
+                                </option> -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[1px] w-full bg-slate-400"></div>
+
+                <!-- ? TAB CONTENT -->
+                <div
+                    data-tab-content
+                    class="flex flex-col items-center py-[1px]"
+                >
+                    <div data-idx="1" class="w-full descriptionTab hidden">
+                        <div
+                            class="flex flex-col gap-2 w-full items-center px-1 py-3"
+                        >
+                            <div class="name w-full md:max-w-[500px]">
+                                <div class="bg-green w-full">
+                                    <input
+                                        type="text"
+                                        data-endpoint-name
+                                        class="bg-slate-200 transition w-full py-1 px-2 text-lg rounded-md focus:outline-blue-400 focus:outline-[2px] outline outline-[1px] outline-slate-400"
+                                        placeholder="endpoint name"
+                                    />
+                                </div>
+                            </div>
+                            <div class="excerpt w-full md:max-w-[500px]">
+                                <div class="w-full">
+                                    <textarea
+                                        data-endpoint-description
+                                        class="bg-slate-200 w-full py-1 transition px-2 focus:outline-blue-400 focus:outline-[2px] text-lg max-h-[190px] min-h-[50px] h-[170px] rounded-md outline outline-[1px] outline-slate-400"
+                                        placeholder="description..."
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-end w-full md:max-w-[500px]"
+                            >
+                                <button
+                                    data-save
+                                    class="bg-blue-400 py-1 px-3 rounded-md text-slate-50"
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-idx="2" class="w-full queryTab hidden"></div>
+                    <div data-idx="3" class="w-full headersTab hidden"></div>
+                    <div data-idx="4" class="w-full bodyTab hidden"></div>
+                    <div data-idx="4" class="w-full settingsTab hidden"></div>
+                </div>
+                <!-- <div class="h-[1px] w-full bg-slate-400"></div> -->
+
+                <div class="flex flex-col absolute px-1 w-full top-[60%]">
+                    <!-- ? RESPONSE HEADERS -->
+                    <div
+                        data-response-headers
+                        class="block __response_headers w-full"
+                    >
+                        <div
+                            class="flex items-center justify-between gap-4 p-2 py-1 text-slate-200 bg-slate-500"
+                        >
+                            <div
+                                data-header-tab
+                                data-response
+                                class="active rounded-sm py-1 px-2"
+                            >
+                                <button
+                                    class="flex text-sm items-center gap-2 sm:gap-4 md:font-semibold"
+                                >
+                                    <span>Response</span>
+                                </button>
+                            </div>
+                            <div
+                                data-headers
+                                data-header-tab
+                                class="rounded-sm py-1 px-2"
+                            >
+                                <button
+                                    class="flex text-sm items-center gap-2 sm:gap-4 md:font-semibold"
+                                >
+                                    <span>Headers</span>
+                                </button>
+                            </div>
+                            <div
+                                data-request
+                                data-header-tab
+                                class="rounded-sm py-1 px-2"
+                            >
+                                <button
+                                    class="flex text-sm items-center gap-2 sm:gap-4 md:font-semibold"
+                                >
+                                    <span>Request</span>
+                                </button>
+                            </div>
+                            <!-- <div
+                                data-cookies
+                                data-header-tab
+                                class="rounded-sm py-1 px-2"
+                            >
+                                <button
+                                    class="flex text-sm items-center gap-2 sm:gap-4 md:font-semibold"
+                                >
+                                    <span>Cookies</span>
+                                </button>
+                            </div> -->
+                            <div data-status class="min-w-[100px]">
+                                <span
+                                    class="rounded-md flex cursor-text text-sm items-center py-1 px-2 bg-slate-600 min-w-[50px] h-6"
+                                ></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-[1px] w-full bg-slate-400"></div>
+                    <div
+                        id="responseEditor"
+                        class="__editor bg-slate-300 flex w-full"
+                    >
+                        <div data-editor_ class="response cursor-text"></div>
+                        <div data-editor_ class="headers cursor-text hidden">
+                            Headers
+                        </div>
+                        <div data-editor_ class="request cursor-text hidden">
+                            Request
+                        </div>
+                        <div data-editor_ class="cookies hidden">Cookies</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+

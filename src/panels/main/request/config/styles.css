@@ -1,0 +1,7 @@
+.__header_tabs [data-tab] button {
+    transition: background-color 100ms ease-in-out;
+}
+
+.__header_tabs [data-tab].active button {
+    background: #cbd5e1;
+}

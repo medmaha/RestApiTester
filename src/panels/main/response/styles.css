@@ -1,0 +1,17 @@
+[data-response-headers] [data-header-tab] {
+    transition: background-color 150ms ease-in-out;
+}
+
+[data-response-headers] [data-header-tab]:hover {
+    background-color: rgba(120, 148, 187, 0.267);
+}
+
+[data-response-headers] [data-header-tab].active {
+    background-color: rgba(148, 163, 184, 0.479);
+    font-weight: 600;
+}
+
+
+#responseEditor [data-editor_].hidden {
+    display: none;
+}

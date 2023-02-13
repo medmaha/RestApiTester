@@ -1,0 +1,55 @@
+@import url('./index.css');
+
+
+input {
+    background-color: rgb(241 245 249 /1);
+}
+
+
+
+::-webkit-scrollbar {
+    width: 7px
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8491a0;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #b0c2d8;
+    border-radius: 1rem;
+}
+
+
+
+::-moz-scrollbar-thumb {
+    background-color: #3c4e64;
+    border-radius: 1rem;
+}
+
+::-moz-scrollbar-track {
+    background-color: #b0c2d8;
+    border-radius: 1rem;
+}
+
+@supports (scrollbar-width: 7px) {
+    * {
+        scrollbar-width: 7px;
+    }
+
+}
+
+@supports (scrollbar-color: #8491a0 #b0c2d8) {
+    * {
+        /* margin-block: 5px; */
+        scrollbar-color: #8491a0 #b0c2d8;
+        scrollbar-width: thin;
+    }
+
+    ::-moz-scrollbar {
+        width: 7px
+    }
+
+
+}

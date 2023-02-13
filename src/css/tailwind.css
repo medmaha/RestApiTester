@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+
+.response-pre {
+    overflow: hidden;
+    background-color: #cbd5e1;
+    overflow-y: scroll;
+    outline-color: #64748b;
+    background-color: rgb(203 213 225 / 1);
+}
+
+
+.h {
+    color: rgb(2, 56, 82);
+}
+
+.h-key {
+    color: rgb(22, 64, 128);
+}
+
+.h-value {
+    color: rgb(24, 112, 134);
+}
+
+.h-value-n {
+    color: rgb(201, 17, 118);
+}
+
+.h-value-b {
+    color: rgb(187, 172, 38);
+}

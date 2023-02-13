@@ -1,0 +1,103 @@
+.h {
+    color: rgb(2, 56, 82);
+}
+
+.h-key {
+    color: rgb(22, 64, 128);
+}
+
+.h-item {
+    color: rgb(36, 90, 172);
+}
+
+.h-value {
+    color: rgb(24, 112, 134);
+}
+
+.h-value-n {
+    color: rgb(201, 17, 118);
+}
+
+.h-value-b {
+    color: rgb(187, 172, 38);
+}
+
+
+
+/* *  ----------------------  Response Editor ---------------------------*/
+
+#responseEditor {
+    position: relative;
+    background-color: #cbd5e1;
+    outline-color: #64748b;
+    background-color: #cbd5e1;
+}
+
+
+#responseEditor [data-editor_] {
+    width: 100%;
+    height: var(--height);
+}
+
+#responseEditor .wrapper {
+    display: flex;
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+    background: transparent;
+}
+
+#responseEditor .wrapper [data-pre-editor] {
+    margin: 0;
+    height: 100%;
+    line-height: 1.1rem;
+}
+
+/* ?                        --------------------------                           */
+/* ?  ---------------------|                          |--------------------------*/
+/* ?  ---------------------|  Response Editor CONTENT |--------------------------*/
+/* ?  ---------------------|                          |--------------------------*/
+/* ?                        --------------------------                           */
+
+#responseEditor [data-pre-editor].content {
+    background-color: rgb(203 213 225 /1);
+    flex: 1;
+    font-size: 1rem;
+}
+
+#responseEditor [data-pre-editor].content-wrapper {
+    /* display: flex; */
+    /* flex-direction: column; */
+    line-height: 1rem;
+}
+
+
+/* ?                        --------------------------                           */
+/* ?  ---------------------|                          |--------------------------*/
+/* ?  ---------------------|  Response Editor LINES   |--------------------------*/
+/* ?  ---------------------|                          |--------------------------*/
+/* ?                        --------------------------                           */
+
+#responseEditor [data-pre-editor].lines {
+    background-color: rgb(148 163 184 / 1);
+    min-height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+    font-size: .8rem;
+    background-color: rgb(148 163 184 / 1);
+    width: fit-content;
+    min-width: 1rem;
+}
+
+#preTextareaLines span {
+    padding: 0 2px;
+    background-color: rgb(148 163 184 / 1);
+    min-width: 100%;
+    max-width: max-content;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

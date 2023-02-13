@@ -1,0 +1,48 @@
+[data-endpoint] {
+    opacity: .9;
+}
+
+[data-endpoint]:hover {
+    opacity: .95;
+}
+
+[data-endpoint].active {
+    opacity: 1;
+    position: relative;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-color: #6ea3df;
+}
+
+[data-endpoint].active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* border-color: rgb(51, 51, 246); */
+    box-shadow: inset 0 0 5px #84abd9;
+    pointer-events: none;
+
+}
+
+.active.pulse {
+    animation-name: pulse;
+    animation-duration: 800ms;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 3;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
