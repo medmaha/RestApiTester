@@ -1,20 +1,16 @@
 const responseHeaders = document.querySelector("[data-response-headers]")
 
-const statusElement = responseHeaders.querySelector("[data-status] span")
+const statusElement = responseHeaders.querySelector("[data-status]")
 function setStatus(status) {
     var bgColor
-    var __class = "py-1 px-2 gap-1 sm:gap-2 text-center text-slate-200 "
 
-    const temp = `
-        <span class="font-bold tracking-wider">${status.code}</span>
-        <span class="text-sm tracking-wider">${status.text}</span>
-        `
     switch (true) {
         case status.code === 200:
-            bgColor = "bg-blue-500"
+            bgColor = "bg-blue-500 px-4"
             break
         case status.code === 201:
-            bgColor = "bg-green-500"
+            bgColor = "bg-green-500 px-4"
+            status.text = "Created"
             break
         case status.code < 400:
             bgColor = "bg-orange-500"
@@ -22,41 +18,42 @@ function setStatus(status) {
         case status.code >= 400:
             bgColor = "bg-red-500"
             break
+        case status.code === "":
+            bgColor = "bg-red-400"
+            break
         default:
             bgColor = ""
             break
     }
-
-    __class += bgColor
-
-    statusElement.classList.add(...__class.split(" "))
+    const temp = `<b>${status.code}<b/> ${status.text}`
+    statusElement.classList.add(...bgColor.split(" "))
     statusElement.innerHTML = temp
 }
 
 document.addEventListener("onpreresponse", () => {
-    statusElement.innerHTML = ""
+    statusElement.innerHTML = "HTTP_STATUS"
     statusElement.classList.remove(
-        ..."bg-blue-500 bg-orange-500 bg-red-500 bg-green-500".split(" "),
+        ..."bg-blue-500 bg-orange-500 bg-red-500 bg-green-500 px-4".split(" "),
     )
-    statusElement.classList.add("bg-slate-600")
+    statusElement.classList.add(..."bg-slate-600 px-2".split(" "))
 })
 
 document.addEventListener("onresponse", ({ detail }) => {
     statusElement.classList.remove("bg-slate-600")
     detail = detail.data
-    let status = {
-        code: 400,
-        text: "BAD REQUEST",
-    }
+    let status = {}
     if (detail.data) {
         status.code = detail.status
-        status.text = detail.statusText
+        status.text = detail.statusText || "Ok"
     } else if (detail.response) {
         status.code = detail.response.status
         status.text = detail.response.statusText
     } else if (detail.request) {
-        status.code = 408
-        status.text = "REQUEST TIMEOUT"
+        status.code = ""
+        status.text = detail.code
+    } else {
+        status.code = 400
+        status.text = "BAD REQUEST"
     }
     setStatus(status)
 })

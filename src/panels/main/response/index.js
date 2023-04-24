@@ -8,9 +8,8 @@ const responseEditor = document.getElementById("responseEditor")
 function setupSizing() {
     responseEditor.style.setProperty(
         "height",
-        String(
-            window.innerHeight - responseEditor.getBoundingClientRect().y - 3,
-        ) + "px",
+        String(window.innerHeight - responseEditor.getBoundingClientRect().y) +
+            "px",
     )
 }
 setupSizing()

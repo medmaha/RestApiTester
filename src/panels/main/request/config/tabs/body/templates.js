@@ -4,7 +4,7 @@ export function getInitialTabs() {
     const wrapper = `
     <div
         data-body-t-b
-        class="flex gap-4 justify-evenly w-[50%] px-8"
+        class="flex gap-4 justify-evenly w-full max-w-[320px] px-8"
     >
         <style>
             [data-body-t-b] .active {

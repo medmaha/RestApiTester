@@ -86,7 +86,7 @@ export const getKeyValuePairsWrapper = (tab, init) => {
 
             <button
                 data-add-field
-                class="w-max ml-[2.5rem] p-1 px-2 rounded-md bg-blue-500 text-slate-200"
+                class="w-max ml-[2.5rem] mt-2 p-1 px-2 rounded-md bg-blue-500 text-slate-200"
             >
                 Add Field
             </button>
