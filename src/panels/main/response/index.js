@@ -14,4 +14,4 @@ function setupSizing() {
 }
 setupSizing()
 
-document.addEventListener("ontabchange", setupSizing)
+// document.addEventListener("ontabchange", setupSizing)
